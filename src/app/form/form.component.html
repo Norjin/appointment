@@ -1,0 +1,13 @@
+<form [formGroup]="newForm" class="form" (ngSubmit)="onSubmit()" >
+  <button type="submit" [disabled]="!newForm.valid">Submit</button>
+  <button type="button" (click)="onCancel()">Cancel</button>
+  <label>Date: 
+    <input type="date" name="date" [min]="today" [formControl]="newForm.controls['date']"/>
+  </label>
+  <label>Time: 
+    <input type="time" name="time" [formControl]="newForm.controls['time']"/>
+  </label>
+  <label>Description: 
+    <input type="text" name="description" [formControl]="newForm.controls['description']"/>
+  </label>
+</form>

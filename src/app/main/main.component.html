@@ -1,0 +1,11 @@
+<button *ngIf="!isFormVisible" (click)="onToggle()">New</button>
+<app-form *ngIf="isFormVisible" (cancel)="onToggle()" (newItem)="getAppointments()"></app-form>
+<div class="container">
+  <div class="l-search">
+    <input type="text" [(ngModel)]="searchText" name="text" id="searchtext">
+    <button class="btn-primary" (click)="getAppointments(searchText)">Search</button>
+  </div>
+
+  <app-list [list]="list" *ngIf="isListVisible"></app-list>
+
+</div>
