@@ -9,20 +9,18 @@ export interface Appointment {
   description: string;
 }
 
-let url = 'http://localhost:8000';
-
 @Injectable()
 export class AppointmentService {
 
   constructor(public http: HttpClient) { }
 
   getAllAppointment(text?: string): Observable<Appointment[]> {
-    if(text) return this.http.get<Appointment[]>(`${url}/api/search/${text}`);
-    return this.http.get<Appointment[]>(`${url}/api`);
+    if(text) return this.http.get<Appointment[]>(`/api/search/${text}`);
+    return this.http.get<Appointment[]>(`/api`);
   }
 
   insertAppointment(appointment: Appointment): Observable<Appointment> {
-    return this.http.post<Appointment>(`${url}/api/new`, appointment);
+    return this.http.post<Appointment>(`/api/new`, appointment);
   }
 
 }
