@@ -15,7 +15,9 @@ export class AppointmentService {
   constructor(public http: HttpClient) { }
 
   getAllAppointment(text?: string): Observable<Appointment[]> {
-    if(text) return this.http.get<Appointment[]>(`/api/search/${text}`);
+    if (text) {
+      return this.http.get<Appointment[]>(`/api/search/${text}`);
+    }
     return this.http.get<Appointment[]>(`/api`);
   }
 

@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const bodyParser = require('body-parser');
 const path = require('path');
-const api = require('./router');
+const api = require('./backend/router');
 const http = require('http');
 
 app.use(bodyParser.json());

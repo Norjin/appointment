@@ -8,8 +8,8 @@ import { AppointmentService, Appointment } from '../appointment.service';
 })
 export class MainComponent implements OnInit {
 
-  isFormVisible:boolean = false;
-  isListVisible:boolean = false;
+  isFormVisible = false;
+  isListVisible = false;
   list: Appointment[];
   searchText: string;
 
@@ -20,15 +20,18 @@ export class MainComponent implements OnInit {
     this.getAppointments();
   }
 
-  onToggle():void {
-    if(this.isFormVisible) this.isFormVisible = false;
-    else this.isFormVisible = true;
+  onToggle(): void {
+    if (this.isFormVisible) {
+      this.isFormVisible = false;
+    } else {
+      this.isFormVisible = true;
+    }
   }
 
-  getAppointments(search?:string): void {
-      this.service.getAllAppointment(search).subscribe((data:Appointment[]) => {
+  getAppointments(search?: string): void {
+      this.service.getAllAppointment(search).subscribe((data: Appointment[]) => {
         this.isListVisible = data.length > 0 ? true : false;
-        this.list = data
+        this.list = data;
       });
   }
 }

@@ -7,8 +7,7 @@ import { validateConfig } from '@angular/router/src/config';
 @Component({
   selector: 'app-form',
   templateUrl: './form.component.html',
-  styleUrls: ['./form.component.css'],
-  outputs: ['cancel']
+  styleUrls: ['./form.component.css']
 })
 export class FormComponent implements OnInit {
 
@@ -29,18 +28,19 @@ export class FormComponent implements OnInit {
    }
 
   ngOnInit() {
-    let date = new Date();
-    let mn = date.getMonth() + 1;
-    let month = mn<10? '0'+mn : mn;
-    this.today = date.getFullYear()+"-" +month+"-"+date.getDate();
+    const date = new Date();
+    const mn = date.getMonth() + 1;
+    const month = mn < 10 ? '0' + mn : mn;
+    // this.today = date.getFullYear() + '-' + month + '-' + date.getDate();
+    this.today = new Date().toJSON().split('T')[0];
   }
 
-  onCancel():void {
+  onCancel(): void {
     this.cancel.emit(true);
   }
 
-  onSubmit():void {
-    let record = this.newForm.value;
+  onSubmit(): void {
+    const record = this.newForm.value;
     this.service.insertAppointment(record).subscribe(data => {
       this.newItem.emit(data);
       this.onCancel();

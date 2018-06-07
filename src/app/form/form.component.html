@@ -1,6 +1,8 @@
 <form [formGroup]="newForm" class="form" (ngSubmit)="onSubmit()" >
-  <button type="submit" [disabled]="!newForm.valid">Submit</button>
-  <button type="button" (click)="onCancel()">Cancel</button>
+  <div class="wrapper-btn">
+    <button type="submit" [disabled]="!newForm.valid">Submit</button>
+    <button type="button" (click)="onCancel()">Cancel</button>
+  </div>
   <label>Date: 
     <input type="date" name="date" [min]="today" [formControl]="newForm.controls['date']"/>
   </label>
